@@ -29,6 +29,7 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
+            cursor: pointer;
         }
         .feature-list {
             list-style-type: none;
@@ -37,6 +38,41 @@
         .feature-list li:before {
             content: "✓ ";
             color: #FF830D;
+        }
+        #contactForm {
+            display: none;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        #contactForm h2 {
+            margin-top: 0;
+        }
+        #contactForm label {
+            display: block;
+            margin-top: 10px;
+        }
+        #contactForm input[type="text"],
+        #contactForm input[type="email"],
+        #contactForm input[type="tel"],
+        #contactForm textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        #contactForm input[type="submit"] {
+            background-color: #004AAE;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
         }
     </style>
 </head>
@@ -51,15 +87,42 @@
             <li>Longest Warranty in the Industry – 10 Years</li>
             <li>Service Available in CA, Seattle, and Everett</li>
         </ul>
-        <a href="#contact" class="cta-button">Get Free Inspection</a>
+        <a href="#" class="cta-button" onclick="showForm(event)">Get Free Inspection</a>
     </div>
+
+    <!-- Contact Form -->
+    <form method="post" action="https://2cudacovfa.execute-api.us-west-1.amazonaws.com/default/submit" id="contactForm">
+        <h2>Get Your Free Inspection</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="userEmail">Email:</label>
+        <input type="email" id="userEmail" name="userEmail" required>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+        <label for="zipcode">Zipcode:</label>
+        <input type="text" id="zipcode" name="zipcode" required>
+
+        <label for="projectType">Project Type:</label>
+        <input type="text" id="projectType" name="projectType" required>
+
+        <label for="propertyType">Property Type:</label>
+        <input type="text" id="propertyType" name="propertyType" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <input type="submit" value="Submit">
+    </form>
 
     <section>
         <h2>Signs You Have an Animal Infestation</h2>
         <p>If you aren't 100% certain that you have a rodent or rat infestation, but you are afraid to check your attic or crawl space, here are some signs to look out for:</p>
         <ul>
             <li>Animal Droppings</li>
-            <li>Scurring or Scratching Sounds</li>
+            <li>Scurrying or Scratching Sounds</li>
             <li>Chewed Walls and Wires</li>
             <li>Grease and Dirt Smudges</li>
             <li>Squeaking Noises</li>
@@ -87,7 +150,7 @@
         <h2>Are Rats Really Harmful to Your Health?</h2>
         <p>Rodents can carry harmful bacteria, dangerous diseases, and allergens that cause respiratory issues and illnesses. If you find rodents in your home, you need to get the problem eradicated right away!</p>
         <p>Rodents and their infectious diseases should not be taken lightly. The diseases can lead to fatal respiratory problems for humans. Mice and rats can carry and spread 35+ diseases. Whether you are handling alive or dead rodents, feces, urine, bites, or saliva, you have to be extremely careful and cautious — which is why it should be left to the professionals.</p>
-        <p>Rodents that are infected, can infect people with fleas, mites, and ticks! Some even carry ringworms and tapeworms that people can contract.</p>
+        <p>Rodents that are infected can infect people with fleas, mites, and ticks! Some even carry ringworms and tapeworms that people can contract.</p>
     </section>
 
     <section>
@@ -98,7 +161,7 @@
 
     <section>
         <h2>Call Attic Projects for Professional Rodent Removal</h2>
-        <p>Our licensed and bonded professionals will rodent proof your attic and home while making sure every entry point is sealed. You can sleep peacefully while knowing your home is in great hands with our specialists.</p>
+        <p>Our licensed and bonded professionals will rodent-proof your attic and home while making sure every entry point is sealed. You can sleep peacefully while knowing your home is in great hands with our specialists.</p>
         <ul class="feature-list">
             <li>FREE home inspection.</li>
             <li>No hidden-pricing.</li>
@@ -107,21 +170,6 @@
         <p>Contact us today and schedule a rodent-proofing appointment.</p>
         <a href="#" class="cta-button" onclick="showForm(event)">Get Free Inspection</a>
     </section>
-
-    <!-- Contact Form -->
-    <form method="post" action="https://2cudacovfa.execute-api.us-west-1.amazonaws.com/default/submit" id="contactForm">
-        <h2>Get Your Free Inspection</h2>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="userEmail">Email:</label>
-        <input type="email" id="userEmail" name="userEmail" required>
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-
-        <input type="submit" value="Submit">
-    </form>
 
     <footer>
         <p>© 2024 Attic Projects Company. All rights reserved.</p>
