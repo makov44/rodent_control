@@ -34,8 +34,8 @@ def lambda_handler(event, context):
                 form_data = body
 
         # Extract single values from the parsed form data
-        name = form_data.get('name', ['Guest'])[0]
-        user_email = form_data.get('userEmail', ['no-reply@example.com'])[0]
+        name = form_data.get('name')[0]
+        user_email = form_data.get('userEmail')[0]
         phone_number = form_data.get('phoneNumber', ['Not provided'])[0]
         zipcode = form_data.get('zipcode', ['Not provided'])[0]
         project_type = form_data.get('projectType', ['Not provided'])[0]

@@ -16,6 +16,15 @@
         h1, h2, h3 {
             color: #004AAE;
         }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            width: 100%;
+            max-width: 750px;
+            height: auto;
+        }
         .hero {
             background-color: #FF830D;
             color: white;
@@ -77,6 +86,12 @@
     </style>
 </head>
 <body>
+    <div id="message"></div>
+       <!-- Logo Section -->
+    <div class="logo-container">
+        <img src="https://eco-friendlyrodentcontrol.s3.amazonaws.com/IMG_7154.jpeg" alt="Company Logo" width="747" height="368">
+    </div>
+
     <div class="hero">
         <h1>Rodent Proofing & Removal</h1>
         <h2>IT'S TIME TO EVICT THEM!</h2>
@@ -177,11 +192,52 @@
 
     <script>
     function showForm(event) {
-        event.preventDefault(); // Prevent default link behavior
-        var form = document.getElementById('contactForm');
-        form.style.display = 'block';
-        form.scrollIntoView({ behavior: 'smooth' }); // Scroll to the form
-    }
+          event.preventDefault(); // Prevent default link behavior
+          var form = document.getElementById('contactForm');
+          form.style.display = 'block';
+          form.scrollIntoView({ behavior: 'smooth' }); // Scroll to the form
+      }
+
+      // Handle form submission
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent default form submission
+
+          var form = event.target;
+          var formData = new FormData(form);
+
+          // Convert FormData to URL-encoded string
+          var urlEncodedData = new URLSearchParams(formData).toString();
+
+          // Send data via fetch with the correct headers
+          fetch(form.action, {
+              method: form.method,
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: urlEncodedData
+          }).then(function(response) {
+              if (response.ok) {
+                  // Submission was successful
+                  window.location.href = window.location.pathname + '?success=1';
+              } else {
+                  // Submission failed
+                  window.location.href = window.location.pathname + '?failed=1';
+              }
+          }).catch(function(error) {
+              // Handle network errors
+              window.location.href = window.location.pathname + '?failed=1';
+          });
+      });
+
+      // Display message based on query parameter
+      window.addEventListener('load', function() {
+          var params = new URLSearchParams(window.location.search);
+          if (params.has('success')) {
+              document.getElementById('message').innerHTML = '<p style="color:green;">Your form has been submitted successfully.</p>';
+          } else if (params.has('failed')) {
+              document.getElementById('message').innerHTML = '<p style="color:red;">There was an error processing your request. Please try again later.</p>';
+          }
+      });
     </script>
 </body>
 </html>
